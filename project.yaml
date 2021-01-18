@@ -12,6 +12,8 @@ spec:
   destinations:
   - namespace: staging
     server: https://76d47a35-c5a2-4c29-b83d-652ace867d1c.k8s.ondigitalocean.com
+  - namespace: staging
+    server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: ''
     kind: Namespace

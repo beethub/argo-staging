@@ -12,7 +12,7 @@ spec:
     targetRevision: HEAD
     path: helm
   destination:
-    name: do-nyc3-k8s-beet-infra
+    server: https://kubernetes.default.svc
     namespace: staging
   syncPolicy:
     automated:
