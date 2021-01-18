@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: beet
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: staging
+  source:
+    repoURL: https://github.com/AdrianVarelaG/beet-1
+    targetRevision: HEAD
+    path: helm
+  destination:
+    name: do-nyc3-k8s-beet-infra 
+    namespace: staging
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+  

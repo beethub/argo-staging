@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: staging
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Staging project
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: staging
+    server: https://76d47a35-c5a2-4c29-b83d-652ace867d1c.k8s.ondigitalocean.com
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  namespaceResourceBlacklist:
+  - group: ''
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: ''
+    kind: NetworkPolicy
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+

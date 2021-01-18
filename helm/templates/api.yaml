@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: staging
+  source:
+    repoURL: https://github.com/AdrianVarelaG/api
+    targetRevision: HEAD
+    path: helm
+  destination:
+    name: do-nyc3-k8s-beet-infra 
+    namespace: staging
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
